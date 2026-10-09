@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happiest Birthday Dear Love!</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background Animation */
+        .heart-bg {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 105, 180, 0.2);
+            animation: floatUp 6s linear infinite;
+            bottom: -50px;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            width: 90%;
+            max-width: 450px;
+            z-index: 10;
+            transition: all 0.5s ease;
+        }
+
+        h1 {
+            color: #d1477a;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            word-wrap: break-word;
+        }
+
+        p {
+            color: #6b5b7b;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            min-height: 60px;
+        }
+
+        button {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.1s ease, background 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        #yesBtn {
+            background-color: #ff4d88;
+            color: white;
+        }
+
+        #yesBtn:active {
+            transform: scale(0.95);
+        }
+
+        #noBtn {
+            background-color: #b0a8b9;
+            color: white;
+            position: absolute;
+            left: 55%;
+        }
+
+        /* Second Screen Content (Hidden initially) */
+        .hidden {
+            display: none !important;
+        }
+
+        .letter-content {
+            line-height: 1.6;
+            color: #4a4a4a;
+            font-size: 1.1rem;
+            text-align: left;
+            margin-top: 20px;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Background Hearts -->
+    <div id="heartsContainer"></div>
+
+    <!-- Main Screen Card -->
+    <div class="container" id="mainCard">
+        <h1>happiesttt birthday dear love ❤️</h1>
+        <p>wanna explore my love for you?</p>
+        <div class="btn-container">
+            <button id="yesBtn" onclick="revealLove()">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <!-- Second Screen Card (Your Letter) -->
+    <div class="container hidden" id="letterCard">
+        <h1>For My Favorite Person 👑</h1>
+        <div class="letter-content">
+            Hey love, 
+            
+            Happy Birthday! I wanted to make something unique just for you to show how much you mean to me. You bring so much joy into my life, and this little corner of the internet belongs entirely to you today. 
+
+            Thank you for being you. I love you to the moon and back! ✨
+        </div>
+    </div>
+
+    <script>
+        // 1. Floating Hearts Logic
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-bg');
+            heart.innerText = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+            document.getElementById('heartsContainer').appendChild(heart);
+            
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+        setInterval(createHeart, 4000);
+        // Start with a few hearts already on screen
+        for(let i=0; i<5; i++) { setTimeout(createHeart, i * 300); }
+
+        // 2. Runaway "No" Button Logic (Optimized for Mobile Taps and Desktop Mice)
+        const noBtn = document.getElementById('noBtn');
+        
+        function escapeButton(e) {
+            e.preventDefault(); // Prevents accidental clicking or zooming on mobile
+            
+            // Calculate safe boundaries so the button stays visible inside the viewport
+            const padding = 20;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+            
+            // Generate completely random coordinates
+            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+            
+            // Change positioning mode and move it instantly
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // Triggers the escape whenever a cursor hovers over it OR a mobile finger touches it
+        noBtn.addEventListener('mouseover', escapeButton);
+        noBtn.addEventListener('touchstart', escapeButton);
+        noBtn.addEventListener('pointerdown', escapeButton);
+
+        // 3. Screen Switch Logic when clicking "Yes"
+        function revealLove() {
+            const mainCard = document.getElementById('mainCard');
+            const letterCard = document.getElementById('letterCard');
+            
+            mainCard.style.opacity = '0';
+            setTimeout(() => {
+                mainCard.classList.add('hidden');
+                letterCard.classList.remove('hidden');
+                letterCard.style.opacity = '0';
+                setTimeout(() => {
+                    letterCard.style.opacity = '1';
+                }, 50);
+            }, 400);
+        }
+    </script>
+</body>
+</html>
