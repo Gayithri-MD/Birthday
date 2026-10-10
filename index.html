@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happiest Birthday Dear Love!</title>
+
     <style>
         * {
             box-sizing: border-box;
@@ -13,48 +15,67 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%);
+            background: linear-gradient(135deg, #eaf8ff 0%, #d9efff 50%, #edf7ff 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            align-items: flex-start;
+            overflow-x: hidden;
+            overflow-y: auto;
             position: relative;
+            padding: 25px 0;
         }
 
-        /* Floating Hearts Background Animation */
-        .heart-bg {
-            position: absolute;
-            font-size: 20px;
-            color: rgba(255, 105, 180, 0.2);
-            animation: floatUp 6s linear infinite;
-            bottom: -50px;
+        /* Floating Hearts Background */
+        #heartsContainer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
             z-index: 1;
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
+        .heart-bg {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 105, 180, 0.25);
+            animation: floatUp 6s linear infinite;
+            bottom: -50px;
         }
 
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main and Letter Cards */
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.88);
             padding: 40px 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(75, 145, 190, 0.12);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             width: 90%;
             max-width: 450px;
             z-index: 10;
-            transition: all 0.5s ease;
+            transition: opacity 0.5s ease;
+            margin: auto;
+            flex-shrink: 0;
         }
 
         h1 {
             color: #d1477a;
             font-size: 2.2rem;
             margin-bottom: 15px;
-            word-wrap: break-word;
+            overflow-wrap: anywhere;
         }
 
         p {
@@ -79,7 +100,7 @@
             border-radius: 50px;
             cursor: pointer;
             transition: transform 0.1s ease, background 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         #yesBtn {
@@ -98,11 +119,11 @@
             left: 55%;
         }
 
-        /* Second Screen Content (Hidden initially) */
         .hidden {
             display: none !important;
         }
 
+        /* Birthday Letter */
         .letter-content {
             line-height: 1.6;
             color: #4a4a4a;
@@ -110,110 +131,176 @@
             text-align: left;
             margin-top: 20px;
             white-space: pre-line;
+            overflow-wrap: anywhere;
+        }
+
+        /* Small Screen Adjustments */
+        @media (max-width: 480px) {
+            body {
+                padding: 18px 0;
+            }
+
+            .container {
+                width: 92%;
+                padding: 28px 20px;
+                border-radius: 18px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1.05rem;
+            }
+
+            button {
+                padding: 12px 27px;
+                font-size: 1rem;
+            }
+
+            .letter-content {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+        }
+
+        /* Respect reduced-motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            .heart-bg {
+                animation: none;
+            }
+
+            .container {
+                transition: none;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Floating Background Hearts -->
     <div id="heartsContainer"></div>
 
-    <!-- Main Screen Card -->
+    <!-- Main Birthday Screen -->
     <div class="container" id="mainCard">
         <h1>happiesttt birthday Mr. Abhishek❤️</h1>
         <p>wanna explore my love for you?</p>
+
         <div class="btn-container">
             <button id="yesBtn" onclick="revealLove()">Yes</button>
             <button id="noBtn">No</button>
         </div>
     </div>
 
-    <!-- Second Screen Card (Your Letter) -->
+    <!-- Birthday Letter Screen -->
     <div class="container hidden" id="letterCard">
         <h1>For My Favorite Person 👑</h1>
-        <div class="letter-content">
-            Happiesttt birthday dear love... Nimge idella cringe or Eno ee hudgi hopes itkondidale ansabahudu..please don't kill my joy or my way of expressing my love for you... Nan andhkondeee irlilla nimna naan ista padthini adu istuuu antha.. Neev andhkobahudu en thumba dina agilla astondh attach agakke anthella but en andre naan idna nimge helilla aste but I liked you since 2025 may..mahesh dodopa mane gruha pravesha inda.. U remember when we were playing cards that's when I started liking you and I said "nimna miss madkothidini" Antha amele illa sumne ande antha helde neev bejar madkondri.. I'm so sorry for that. Miss madkothidde nina but I was not ready for that version of me itself.. Naan haag helidna that too to a person whom I thought I would not get into a relationship with antha ansthu... Adhu admele inda I started liking you more when I learned about Aunty ( Nam atthe andre nim amma) Eno onthara aunty ista adru.. Nimge cringe or dove ansbahudu but genuinely aunty mathaduvaga same Nam amma mathado thara aagtte.. Onthara aunty slang or avru avr kelsadd bagge mathaduvaga I felt oh aunty same Nam amma thara mathadtharalla antha... And nim thangi kuda she is cute nim ginta.. And uncle bagge nange jaasthi gotilla sorry but uncle ge nan hesru nenp ide avattu en ammu andralle aste gottirodu... Overall I love everything about you... 
 
-Naav avattu terrace alli kuthu mathadiddu... Mane mundhe....horag ninthkond mathadiddu.. Manei hinde muthh kottiddu.. Call alli mathadirodu.. Yappa istella mathadthana ee hudgu ansirodu.. Nim cute cute naughty msgs yella reply agatte nan thale li yavagalu... Nimgu heege agatto Or nang maathra na gotilla... Allaaa gottu nimge already thale li thumba iratte yochne madakke antha but nan bagge avaga avaga adru atleast dinakke ondhinda adru nenskolthira??? Yenoo nang doubt.. 
+        <div class="letter-content">Happiesttt birthday dear love... Nimge idella cringe or Eno ee hudgi hopes itkondidale ansabahudu..please don't kill my joy or my way of expressing my love for you... Nan andhkondeee irlilla nimna naan ista padthini adu istuuu antha.. Neev andhkobahudu en thumba dina agilla astondh attach agakke anthella but en andre naan idna nimge helilla aste but I liked you since 2025 may..mahesh dodopa mane gruha pravesha inda.. U remember when we were playing cards that's when I started liking you and I said "nimna miss madkothidini" Antha amele illa sumne ande antha helde neev bejar madkondri.. I'm so sorry for that. Miss madkothidde nina but I was not ready for that version of me itself.. Naan haag helidna that too to a person whom I thought I would not get into a relationship with antha ansthu... Adhu admele inda I started liking you more when I learned about Aunty ( Nam atthe andre nim amma) Eno onthara aunty ista adru.. Nimge cringe or dove ansbahudu but genuinely aunty mathaduvaga same Nam amma mathado thara aagtte.. Onthara aunty slang or avru avr kelsadd bagge mathaduvaga I felt oh aunty same Nam amma thara mathadtharalla antha... And nim thangi kuda she is cute nim ginta.. And uncle bagge nange jaasthi gotilla sorry but uncle ge nan hesru nenp ide avattu en ammu andralle aste gottirodu... Overall I love everything about you...
 
-Uncle en helidare antha neev ivaga ivaga distanta agirodu.. Msg kammiii madodu nangeno hopes build agatte antha lame replies.. Idelladrinda nangen effect agalla bit bejar agatte kanri.... Gottuu.. 100% impossible antha helidira adru neev haagella reply madodu swalpa alla jasthi ne bejar agatte kanrii.. Nimgelli naan disturb madthidino Or irritate madthidinoo nimge nan bagge ontara disgust feel agatteno anthella ansatte... 
+Naav avattu terrace alli kuthu mathadiddu... Mane mundhe....horag ninthkond mathadiddu.. Manei hinde muthh kottiddu.. Call alli mathadirodu.. Yappa istella mathadthana ee hudgu ansirodu.. Nim cute cute naughty msgs yella reply agatte nan thale li yavagalu... Nimgu heege agatto Or nang maathra na gotilla... Allaaa gottu nimge already thale li thumba iratte yochne madakke antha but nan bagge avaga avaga adru atleast dinakke ondhinda adru nenskolthira??? Yenoo nang doubt..
 
-Naan nimna 2 yrs no no no andru neev nanna bidlilla eega neev oppkolalla andidd thakshna naan hegri giveup madli... Nan samadhanakke adru naan try madthini in the end fail adre agli nan best try madidde atleast anno feel iratte enuu madade ne sigli andhkondre adu sigalla antha nang ansatte please istella helthidini ee hudgi ge amele bejar agatte eegle complete agi cutoff madbeku anthella andhkobedri... 
+Uncle en helidare antha neev ivaga ivaga distanta agirodu.. Msg kammiii madodu nangeno hopes build agatte antha lame replies.. Idelladrinda nangen effect agalla bit bejar agatte kanri.... Gottuu.. 100% impossible antha helidira adru neev haagella reply madodu swalpa alla jasthi ne bejar agatte kanrii.. Nimgelli naan disturb madthidino Or irritate madthidinoo nimge nan bagge ontara disgust feel agatteno anthella ansatte...
 
-Nang nim 24 hrs alli ondh 30 min time kodri.. Mathadbeku nim jothe ansatte... Est miss madkothini gotta nimna.. 
+Naan nimna 2 yrs no no no andru neev nanna bidlilla eega neev oppkolalla andidd thakshna naan hegri giveup madli... Nan samadhanakke adru naan try madthini in the end fail adre agli nan best try madidde atleast anno feel iratte enuu madade ne sigli andhkondre adu sigalla antha nang ansatte please istella helthidini ee hudgi ge amele bejar agatte eegle complete agi cutoff madbeku anthella andhkobedri...
 
-Also... I know what you are going through now antha.. Idu crucial time nimge where u r serious abt ur career antha.. At the same time want you to know that u r doing ur best.. Jaasthi pressure thogolbedi health is also important and you Are also important...  Neev en madthidira trust the process aste... Idkinda naan jasthi mature agi mathadakke gotilla amele cringe ansbidatte
+Nang nim 24 hrs alli ondh 30 min time kodri.. Mathadbeku nim jothe ansatte... Est miss madkothini gotta nimna..
 
-At last but not the least of course... Helthiddre mugiyalla.. But jaasthi heliddre chanag iralla... I love you love love you love you jaaaaasthiiiiiiiiii.... I know I'm being super clingy and maybe cringe too... But you are the 1st person to whom I crossed my boundaries for... En boundaries antha andhkobedi.. Naan nim bagge sure agi iddidakkenimgem kiss kottidu I know adu 1 second kuda irlilla antha.. But naan yavattu nang gottiro haage jaasthi yochne madirthini.. Eno sudden agi decision thogolalla... Enu hesitate madale nim hatra mathadthini neev enu judge madalla anno nambke mele... I just feel comfortable but sometimes hesitate padthini enadru reply madakinna munche aduuu neev distant act madthirodrindaa... 
+Also... I know what you are going through now antha.. Idu crucial time nimge where u r serious abt ur career antha.. At the same time want you to know that u r doing ur best.. Jaasthi pressure thogolbedi health is also important and you Are also important... Neev en madthidira trust the process aste... Idkinda naan jasthi mature agi mathadakke gotilla amele cringe ansbidatte
 
-Jaasthi aythu ansatte but heg helodu gotilla maybe eeg helbahudu antha helde.. Estond vishya already helidini nimge.. 
+At last but not the least of course... Helthiddre mugiyalla.. But jaasthi heliddre chanag iralla... I love you love love you love you jaaaaasthiiiiiiiiii.... I know I'm being super clingy and maybe cringe too... But you are the 1st person to whom I crossed my boundaries for... En boundaries antha andhkobedi.. Naan nim bagge sure agi iddidakkenimgem kiss kottidu I know adu 1 second kuda irlilla antha.. But naan yavattu nang gottiro haage jaasthi yochne madirthini.. Eno sudden agi decision thogolalla... Enu hesitate madale nim hatra mathadthini neev enu judge madalla anno nambke mele... I just feel comfortable but sometimes hesitate padthini enadru reply madakinna munche aduuu neev distant act madthirodrindaa...
+
+Jaasthi aythu ansatte but heg helodu gotilla maybe eeg helbahudu antha helde.. Estond vishya already helidini nimge..
 
 So... Sorry time waste agide ansiddre istondella odhbekaythu... But I feel like I want to squeeze into ur arms and hug you tightly and never let you go anno thara and just bury my face into you chest and stay like that forever anno thara yella ansatte... I just don't know naan hege express maadli antha.. I just love you 🫂.. I'm proud of what u r doing... You may feel like naan enu madilla inna antha but I trust ur process and I trust you.. Make aunty proud... I will always be one of the biggest well wishers of you ever
 
-Please istella helidini neev matte full ignore mado thara or distant action madbedi... Even if we didn't end up with each other in our lives still a part of my heart always belongs to you because you are the 1st person that I ever felt like this about... 
+Please istella helidini neev matte full ignore mado thara or distant action madbedi... Even if we didn't end up with each other in our lives still a part of my heart always belongs to you because you are the 1st person that I ever felt like this about...
 
 Remember.. Be strong be careful be healthy and happy... And don't forget to love me everrrrrr... Once again happiesttt birthday MR. Abhishek 🤍🧿
         </div>
     </div>
 
     <script>
-        // 1. Floating Hearts Logic
+        // 1. Floating Hearts
         function createHeart() {
             const heart = document.createElement('div');
+
             heart.classList.add('heart-bg');
             heart.innerText = '❤️';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
-            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
-            document.getElementById('heartsContainer').appendChild(heart);
-            
-            setTimeout(() => { heart.remove(); }, 6000);
-        }
-        setInterval(createHeart, 4000);
-        // Start with a few hearts already on screen
-        for(let i=0; i<5; i++) { setTimeout(createHeart, i * 300); }
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
 
-        // 2. Runaway "No" Button Logic (Optimized for Mobile Taps and Desktop Mice)
+            document.getElementById('heartsContainer').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 4000);
+
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createHeart, i * 300);
+        }
+
+        // 2. Runaway No Button
         const noBtn = document.getElementById('noBtn');
-        
+
         function escapeButton(e) {
-            e.preventDefault(); // Prevents accidental clicking or zooming on mobile
-            
-            // Calculate safe boundaries so the button stays visible inside the viewport
+            e.preventDefault();
+
             const padding = 20;
-            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
-            
-            // Generate completely random coordinates
-            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
-            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
-            
-            // Change positioning mode and move it instantly
+            const maxX = Math.max(
+                padding,
+                window.innerWidth - noBtn.offsetWidth - padding
+            );
+            const maxY = Math.max(
+                padding,
+                window.innerHeight - noBtn.offsetHeight - padding
+            );
+
+            const randomX = Math.floor(
+                Math.random() * (maxX - padding + 1) + padding
+            );
+            const randomY = Math.floor(
+                Math.random() * (maxY - padding + 1) + padding
+            );
+
             noBtn.style.position = 'fixed';
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
         }
 
-        // Triggers the escape whenever a cursor hovers over it OR a mobile finger touches it
         noBtn.addEventListener('mouseover', escapeButton);
-        noBtn.addEventListener('touchstart', escapeButton);
+        noBtn.addEventListener('touchstart', escapeButton, { passive: false });
         noBtn.addEventListener('pointerdown', escapeButton);
 
-        // 3. Screen Switch Logic when clicking "Yes"
+        // 3. Show the Birthday Letter
         function revealLove() {
             const mainCard = document.getElementById('mainCard');
             const letterCard = document.getElementById('letterCard');
-            
+
             mainCard.style.opacity = '0';
+
             setTimeout(() => {
                 mainCard.classList.add('hidden');
                 letterCard.classList.remove('hidden');
                 letterCard.style.opacity = '0';
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+
                 setTimeout(() => {
                     letterCard.style.opacity = '1';
                 }, 50);
             }, 400);
         }
     </script>
+
 </body>
 </html>
